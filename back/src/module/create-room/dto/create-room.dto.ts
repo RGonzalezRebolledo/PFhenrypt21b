@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsNotEmpty, IsPositive } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty, IsPositive, Matches, Min, Max } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -27,6 +27,7 @@ export class CreateRoomDto {
   })
   @IsString()
   @IsNotEmpty()
+  @Matches(/^\d+m²$/, { message: 'El tamaño debe estar en formato como "50m²".' })
   size: string;
 
 
@@ -42,6 +43,8 @@ export class CreateRoomDto {
   @IsNumber()
   @IsPositive()
   @IsNotEmpty()
+  @Min(1)
+  @Max(4)
   beds: number;
 
 
@@ -57,6 +60,8 @@ export class CreateRoomDto {
   @IsNumber()
   @IsPositive()
   @IsNotEmpty()
+  @Min(0)
+  @Max(5)
   rating: number;
 
 /**

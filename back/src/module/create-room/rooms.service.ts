@@ -10,6 +10,16 @@ export class RoomsService {
   ) {}
 
   async createRoom(createRoomDto: CreateRoomDto, image: Express.Multer.File): Promise<Room> {
+
+     const existingRoom = await this.roomRepository.findByTitle(createRoomDto.title);
+     if (existingRoom) {
+       throw new Error(`Ya existe una habitación con el título "${createRoomDto.title}".`);
+     }
+ 
+     if (createRoomDto.price < 10) {
+       throw new Error('El precio debe ser mayor a 10.');
+     }
+
     return await this.roomRepository.createRoom(createRoomDto, image);
   }
 
@@ -19,7 +29,13 @@ export class RoomsService {
   }
 
 
-  async deleteRoomById(id: string): Promise<any> {
+  async deleteRoomById(id: string): Promise<void> {
+
+    const room = await this.roomRepository.findById(id);
+    if (!room) {
+      throw new Error('No se encontró la habitación especificada.');
+    }
+
     await this.roomRepository.deleteRoomById(id); 
   }
 }

@@ -34,22 +34,24 @@ export class RoomsRepository {
 
     async getAllRooms(page: number, limit: number): Promise<Room[]> {
         return this.roomRepository.find({
+          where: { isDeleted: false },
           take: limit,
           skip: (page - 1) * limit,
         });
       }
 
 
-    async deleteRoomById(id: string): Promise<{id:string}> {    
-        await this.roomRepository.delete(id); 
-        return {id}
+    async deleteRoomById(id: string): Promise<void> {    
+        await this.roomRepository.delete(id), { isDeleted: false }; 
     }
 
     
-    async findById(id: string): Promise<Room> {
-        const user = await this.roomRepository.findOne({
-          where: { id }
-        });
-        return user;
+    async findById(id: string): Promise<Room | null> {
+        return await this.roomRepository.findOne({ where: { id, isDeleted: false } });
       }
+
+
+    async findByTitle(title: string): Promise<Room | null> {
+     return this.roomRepository.findOne({ where: { title } });
+  }
 }

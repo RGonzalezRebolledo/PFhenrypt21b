@@ -24,7 +24,7 @@ export class Room {
     example: 'Habitación Deluxe',
     description: 'Título o nombre de la habitación.',
   })
-  @Column()
+  @Column({unique: true})
   title: string;
 
 
@@ -36,7 +36,7 @@ export class Room {
     example: '50m²',
     description: 'Tamaño de la habitación.',
   })
-  @Column()
+  @Column({ type: 'varchar', length: 10, default: '0m²' })
   size: string;
 
 
@@ -49,7 +49,7 @@ export class Room {
     example: 2,
     description: 'Número de camas en la habitación.',
   })
-  @Column()
+  @Column({ type: 'int', default: 1 })
   beds: number;
 
 
@@ -61,7 +61,7 @@ export class Room {
     example: 4.5,
     description: 'Calificación promedio de la habitación.',
   })
-  @Column({ type: 'float' })
+  @Column({ type: 'float', default: 0, precision: 2, scale: 1 })
   rating: number;
 
 
@@ -74,7 +74,7 @@ export class Room {
     example: 'https://example.com/room.jpg',
     description: 'URL de la imagen representativa de la habitación.',
   })
-  @Column()
+  @Column({ nullable: true })
   image: string;
 
 
@@ -86,7 +86,7 @@ export class Room {
     example: 200.5,
     description: 'Precio de la habitación por noche.',
   })
-  @Column({ type: 'float' })
+  @Column({ type: 'float', nullable: false })
   price: number;
 
 
@@ -98,7 +98,7 @@ export class Room {
     example: 'Habitación espaciosa con vistas al mar y todas las comodidades modernas.',
     description: 'Descripción detallada de la habitación.',
   })
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   description: string;
 
   /**
@@ -109,7 +109,7 @@ export class Room {
     example: 'd230c7d9-b983-4e78-b846-944dbe62d7b1',
     description: 'Tipo de habitación asociada.'
   })
-  @Column()
+  @Column({ nullable: false })
   roomType: string;
 
   /**
