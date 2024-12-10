@@ -151,7 +151,21 @@ const RegisterComponent = () => {
           ¿Ya tienes una cuenta? <a href="/login">INICIA SESIÓN</a>
         </p>
 
-        <button type="submit" className={Style.submit}>
+        <button type="submit" 
+        className={`${
+        Object.values(form).every(value => value.trim() !== "")
+        ? Style.submit
+        : Style.submitDisabled
+        }`}
+        disabled={
+          !form.name || 
+          !form.email || 
+          !form.password || 
+          !form.confirm_password || 
+          !form.phone || 
+          !form.dni
+        }
+        >
           {loading ? <Loading /> : "REGISTRATE"}
         </button>
       </div>
