@@ -49,9 +49,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div className="w-1/4 h-1 bg-marron mb-2 mx-auto"></div>
-
         <div className="mt-8">
           <p className="text-xl font-semibold mb-2">Síguenos en Nuestras Redes</p>
 

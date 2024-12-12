@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import HomeContainer from "@/components/HomeContainer/Home";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Chatbot from "@/components/chatbot/chatbot";
-import ShowComponent from "@/components/ShowComponent/ShowComponent";
 import { LogginProvider } from "@/context/logginContext";
 import Providers from "./providers";
 

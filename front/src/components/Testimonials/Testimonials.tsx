@@ -1,14 +1,10 @@
-"use client";
-import React, { useState, useEffect } from "react";
+'use client'
+
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-type Testimonial = {
-  name: string;
-  text: string;
-  rating: number;
-};
 
 const Testimonials = () => {
-  const testimonials: Testimonial[] = [
+  const testimonials = [
     { name: "Dayi Bustos", text: "Excelente Atención", rating: 5 },
     { name: "Elisabet Rodriguez", text: "Buena Atención", rating: 5 },
     { name: "Juan Pérez", text: "Servicio muy profesional", rating: 4 },
@@ -19,20 +15,20 @@ const Testimonials = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 2) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 2 + testimonials.length) % testimonials.length
     );
-  };
+  }, [testimonials.length]);
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   const visibleTestimonials = [
     testimonials[currentIndex],
@@ -52,9 +48,7 @@ const Testimonials = () => {
                 className="relative bg-white border border-marronfuerte shadow-lg shadow-marronclaro rounded-lg p-6 w-72"
               >
                 <div className="absolute -top-2 left-0 right-0 mx-auto w-64 h-2 bg-marron rounded"></div>
-
                 <div className="absolute -bottom-2 left-0 right-0 mx-auto w-64 h-2 bg-marron rounded"></div>
-
                 <div className="absolute top-1 right-1 text-marronfuerte text-2xl">
                   <Image
                     src="/pluma.svg"
@@ -64,7 +58,6 @@ const Testimonials = () => {
                     className="mb-4"
                   />
                 </div>
-
                 <p className="italic text-gray-700">
                   &quot;{testimonial.text}&quot;
                 </p>
@@ -77,7 +70,6 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
-
           <div className="absolute inset-y-0 flex items-center justify-between w-full px-4">
             <button
               onClick={prevSlide}

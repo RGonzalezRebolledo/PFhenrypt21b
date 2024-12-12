@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 interface FileUploaderProps {
   onFileUpload: (fileUrl: string) => void;
@@ -17,6 +18,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
     setPreviewUrl(preview);
 
     try {
+      console.log(isUploading);
       setIsUploading(true);
 
       const formData = new FormData();
@@ -52,7 +54,14 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
   return (
     <div className="bg-gray-500 h-1/3 flex flex-col justify-center items-center gap-4">
       {previewUrl ? (
-        <img src={previewUrl} alt="Preview" className="w-48 h-48 object-cover rounded" />
+        <Image
+          src={previewUrl}
+          alt="Preview"
+          width={192}
+          height={192}
+          className="object-cover rounded"
+          unoptimized
+        />
       ) : (
         <p className="text-gray-200">Selecciona una imagen para verla aquí</p>
       )}
@@ -67,4 +76,3 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
 };
 
 export default FileUploader;
-

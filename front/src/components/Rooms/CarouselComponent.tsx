@@ -6,12 +6,12 @@ import "swiper/swiper-bundle.css";
 import RoomCard from "./RoomCard";
 import { getRooms } from "@/api/getRooms";
 import { Room } from "@/interfaces/index";
-import styles from "./CarouselComponent.module.css"; 
-import Link from "next/link";
+import styles from "./CarouselComponent.module.css";
+import type { SwiperRef } from "swiper/react";
 
 const SwiperComponent = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef | null>(null);
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -28,18 +28,15 @@ const SwiperComponent = () => {
   }, []);
 
   return (
-
     <div className={styles.container}>
-  
       <div className={styles.buttonContainer}>
         <button
           className={`${styles.navigationButton} ${styles.prevButton}`}
-          onClick={() => swiperRef.current?.swiper.slidePrev()}
+          onClick={() => swiperRef.current?.swiper?.slidePrev()}
         >
           &#x276E;
         </button>
       </div>
-
 
       <div className={styles.swiperContainer}>
         {rooms.length > 0 ? (
@@ -66,11 +63,10 @@ const SwiperComponent = () => {
         )}
       </div>
 
-
       <div className={styles.buttonContainer}>
         <button
           className={`${styles.navigationButton} ${styles.nextButton}`}
-          onClick={() => swiperRef.current?.swiper.slideNext()}
+          onClick={() => swiperRef.current?.swiper?.slideNext()}
         >
           &#x276F;
         </button>

@@ -3,7 +3,6 @@
 
 import styles from './Login.module.css';
 import Image from 'next/image';
-import { MdAttachEmail } from "react-icons/md";
 import Swal from 'sweetalert2';
 
 import { login } from '@/api/login';
@@ -13,10 +12,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useLoggin } from '@/context/logginContext'; 
 
-const dataHarcor = {
-  email: 'harcordigital@gmail.com',
-  password: 'harcordigital',
-};
+
 
 function LoginForm() {
   const router = useRouter();
@@ -76,6 +72,7 @@ function LoginForm() {
           });
         }
       } catch (error) {
+        console.error("Login error:", error);
         Swal.fire({
           icon: 'error',
           title: 'Error',

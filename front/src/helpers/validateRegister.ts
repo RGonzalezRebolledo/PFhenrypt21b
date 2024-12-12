@@ -1,7 +1,7 @@
 
 import {
   valuesTypesRegisterPrueba,
-  valuesTypesRegister,
+
 } from "@/interfaces/TypesRegister";
 
 export const velidateFormRegister = (form: valuesTypesRegisterPrueba) => {
@@ -13,7 +13,7 @@ export const velidateFormRegister = (form: valuesTypesRegisterPrueba) => {
   const regexPhone = /^\+?\d{5,15}$/;
   const regexDni = /^[A-Za-z0-9]{5,15}$/;
 
-  const errors: valuesTypesRegisterPrueba = {};
+  const errors: Partial<valuesTypesRegisterPrueba> = {};
 
   // Validar el nombre
   if (!form.name) {
