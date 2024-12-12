@@ -21,14 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-          <Providers>
+        <Providers>
           <LogginProvider>
             <Header />
             {children}
             <Chatbot />
             <Footer />
-            </LogginProvider>
-            </Providers>
+          </LogginProvider>
+        </Providers>
       </body>
     </html>
   );

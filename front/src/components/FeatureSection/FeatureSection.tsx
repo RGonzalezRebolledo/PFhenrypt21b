@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const FeatureSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16">
       <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
         
         {/* Imagen centrada */}
@@ -24,11 +24,13 @@ const FeatureSection = () => {
           </p>
 
           <ul className="flex space-x-1"> 
-            <li>
-              <span className="font-bold text-marron text-[3rem]">250+</span> Habitaciones de Lujo
+            <li className='flex flex-wrap'>
+              <h4 className="font-primary text-mostaza text-[4rem]">250</h4>
+              <span className='font-secondary text-mostaza text-[3rem] font-bold'>+</span> 
+              <p>Habitaciones de Lujo</p>
             </li>
             <li>
-              <span className="font-bold text-marron text-[3rem] ml-5">4.9</span> Calificación de los Clientes
+              <span className="font-secondary text-marron text-[3rem] ml-5">4.9</span> Calificación de los Clientes
             </li>
           </ul>
 
