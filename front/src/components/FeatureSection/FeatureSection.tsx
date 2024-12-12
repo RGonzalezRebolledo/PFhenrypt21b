@@ -4,8 +4,6 @@ const FeatureSection = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
-        
-        {/* Imagen centrada */}
         <div className="flex justify-center">
           <Image 
             src="/habitacion.png" 
@@ -15,8 +13,6 @@ const FeatureSection = () => {
             height={200} 
           />
         </div>
-        
-
         <div>
           <h2 className="text-3xl font-bold mb-4">El Mejor Hotel en la Ciudad de California</h2>
           <p className="text-gray-700 mb-6">

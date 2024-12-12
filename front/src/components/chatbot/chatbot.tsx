@@ -1,18 +1,15 @@
-// src/components/Chatbot.tsx
-'use client'; // Marca este componente como cliente
+'use client';
 
 import { useEffect } from 'react';
 
-// Define una interfaz para el objeto Landbot
 interface Landbot {
   Livechat: new (options: { configUrl: string }) => void;
 }
 
-
 declare global {
   interface Window {
-    myLandbot?: any; 
-    Landbot: Landbot; 
+    myLandbot?: InstanceType<Landbot['Livechat']>; // Especificamos el tipo de myLandbot
+    Landbot: Landbot;
   }
 }
 
@@ -25,7 +22,8 @@ const Chatbot: React.FC = () => {
         s.async = true;
         s.addEventListener('load', function () {
           window.myLandbot = new window.Landbot.Livechat({
-            configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-2711293-EO7E3H3R3NYZOE88/index.json',
+            configUrl:
+              'https://storage.googleapis.com/landbot.site/v3/H-2711293-EO7E3H3R3NYZOE88/index.json',
           });
         });
         s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
@@ -43,10 +41,7 @@ const Chatbot: React.FC = () => {
     };
   }, []);
 
-  return null; // No se necesita renderizar nada
+  return null;
 };
 
 export default Chatbot;
-
-
-

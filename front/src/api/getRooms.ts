@@ -1,4 +1,4 @@
-import { mockRooms } from "@/app/mocks/rooms";
+
 import { Room } from "@/interfaces";
 
 

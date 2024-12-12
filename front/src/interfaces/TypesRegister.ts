@@ -9,10 +9,10 @@ export interface valuesTypesRegister {
 }
 
 export interface valuesTypesRegisterPrueba {
-  name?: string;
-  email?: string;
-  password?: string;
-  confirm_password?: string;
-  phone?: string;
-  dni?: string;
+  name: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+  phone: string;
+  dni: string;
 }

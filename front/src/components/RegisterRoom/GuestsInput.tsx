@@ -29,6 +29,13 @@ const GuestsInput: React.FC<GuestsInputProps> = ({ maxGuests = 8, onGuestsChange
       onGuestsChange(newGuests);
     }
   };
+  console.log('====================================');
+  console.log(incrementGuests);
+  console.log('====================================');
+
+  console.log('====================================');
+  console.log(decrementGuests);
+  console.log('====================================');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value, 10);

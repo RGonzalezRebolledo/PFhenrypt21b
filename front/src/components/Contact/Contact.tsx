@@ -4,10 +4,6 @@ const ContactForm = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 pt-[80px]">
       <div className="flex flex-col lg:flex-row bg-gray-100 p-4 rounded-lg space-y-8 lg:space-y-0 lg:space-x-8 max-w-4xl">
-
-
-
-
         <div className="flex-1 max-w-md">
           <h2 className="text-2xl font-bold mb-4">CONTACTENOS</h2>
           <p className="text-gray-600 mb-4">
@@ -29,8 +25,6 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-
-
         <div className="flex-1 max-w-md bg-black text-white p-8 rounded-lg">
           <h2 className="text-2xl font-bold mb-4 text-center">CONSULTANOS</h2> 
           <form className="space-y-4">
