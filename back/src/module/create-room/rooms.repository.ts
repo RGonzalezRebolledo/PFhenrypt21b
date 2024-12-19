@@ -17,8 +17,18 @@ export class RoomsRepository {
 
    
   async createRoom(createRoomDto: Partial<Room>): Promise<Room> {
-    const room = this.roomRepository.create(createRoomDto);
-    return await this.roomRepository.save(room);
+    const lastRoom = await this.roomRepository.find({
+      order: { roomNumber: 'DESC'},
+      take: 1
+    });
+
+    const newRoomNumber = lastRoom[0]?.roomNumber ? lastRoom[0].roomNumber + 1: 1;
+    const newRoom = this.roomRepository.create({
+      ...createRoomDto,
+      roomNumber: newRoomNumber,
+    });
+
+    return await this.roomRepository.save(newRoom);
   }
 
     

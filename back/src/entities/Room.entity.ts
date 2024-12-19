@@ -117,6 +117,20 @@ export class Room {
 
   roomType: string;
 
+
+  /**
+   * numero de la habitación.
+   * @example 1
+   */
+  @ApiProperty({
+    example: '1',
+    description: 'numero de la habitación.',
+  })
+
+  @Column({ unique: true })
+  roomNumber: number;
+
+
   @OneToMany(() => Reservation, (reservation) => reservation.room)
   @JoinColumn()
   reservations: Reservation[];
