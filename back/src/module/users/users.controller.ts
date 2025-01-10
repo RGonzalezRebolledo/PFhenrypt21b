@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
@@ -6,6 +7,8 @@ import {
   NotFoundException,
   Param,
   ParseUUIDPipe,
+  Patch,
+  Post,
   Query,
   UseGuards,
   UsePipes,
@@ -18,13 +21,17 @@ import { JwtAuthGuard } from 'src/guards/jwt-auth/jwt-auth.guard';
 import { Roles } from 'src/decorators/roles/roles.decorator';
 import { RolesGuard } from 'src/guards/roles/roles.guard';
 import { User } from 'src/entities/User.entity';
+import { RolesService } from '../roles/roles.service';
+import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 
 @ApiTags('Users')
 @Controller('users')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('admin') 
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService,
+    private readonly rolesService: RolesService,
+  ) {}
 
   @Get('search')
   @UsePipes(new ValidationPipe({ transform: true }))
@@ -61,5 +68,25 @@ export class UsersController {
   @Get('google-auth')
   async getUsersByGoogleAuthProvider(): Promise<User[]> {
     return this.usersService.findUsersByGoogleAuthProvider();
+  }
+
+  @Patch(':userId/role')
+  @Roles('Administrador')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Actualizar rol de usuario' })
+  @ApiResponse({ status: 200, description: 'Rol actualizado correctamente.' })
+  @ApiResponse({ status: 404, description: 'Usuario o rol no encontrado.' })
+  @UsePipes(new ValidationPipe())
+  async updateUserRole(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() updateUserRoleDto: UpdateUserRoleDto
+  ) {
+    const role = await this.rolesService.getRoleByName(updateUserRoleDto.roleName);
+    console.log("role encontrolador: " + role);
+    await this.usersService.updateUserRole(userId, role.id);
+    
+    return {
+      message: 'Rol actualizado correctamente'
+    };
   }
 }

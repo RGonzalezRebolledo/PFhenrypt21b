@@ -40,6 +40,13 @@ async getRoleCliente(): Promise<Role> {
   return this.rolesService.getRoleByNameCliente();
 }
 
+@Get(':id')
+@HttpCode(HttpStatus.OK)
+@ApiResponse({ status: 200, description: 'Rol encontrado.' })
+@ApiResponse({ status: 404, description: 'Rol no encontrado.' })
+async getRoleById(@Param('id') id: string): Promise<Role> {
+  return this.rolesService.getRoleById(id);
+}
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
