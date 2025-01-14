@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../../entities/User.entity';
@@ -42,6 +42,21 @@ export class UsersService {
   async findUsersByGoogleAuthProvider(): Promise<User[]> {
     return this.userRepository.find({ where: { authProvider: 'google' } });
   }
+
+  async updateUserRole(userId: string, roleId: string): Promise<void> {
+    const result = await this.userRepository
+      .createQueryBuilder()
+      .update(User)
+      .set({ role: { id: roleId } })
+      .where('id = :userId', { userId })
+      .execute();
+      
+    if (result.affected === 0) {
+      throw new NotFoundException(`Usuario con ID ${userId} no encontrado`);
+    }
+  }
+
+  
 }
 
 
