@@ -20,7 +20,7 @@ const NosotrosCard: React.FC<CardProps> = ({ name, role, imageUrl }) => {
 
   return (
     <div className={Style.card}>
-      <Image src={imageUrl} alt={name} className={Style.cardImage} width={300} height={300}/>
+      <Image src={imageUrl} alt={name} className={Style.cardImage} width={300} height={300} loading="lazy"/>
       <div className={Style.subCard}>
         <div className={Style.title}>
           <h3 className={Style.cardName}>{name}</h3>

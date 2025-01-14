@@ -17,3 +17,5 @@
 <p>Inputs o placeholder = 8px o 0.5rem</p>
 
 <p>deploy front<p> 
+
+<p>usuario admin:admin@example.com password:Admin123+<p> 

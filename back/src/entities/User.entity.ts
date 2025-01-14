@@ -6,7 +6,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { Role } from './role.entity';
+import { Role } from './Role.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { Reservation } from './Reservation.entity';
 import { Testimonial } from './Testimonial.entity'; 

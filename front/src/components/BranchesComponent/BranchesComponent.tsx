@@ -63,7 +63,7 @@ const BranchesComponent: React.FC = () => {
             <h3 className={Style.name}>{branch.name}</h3>
             <p>Coordinates: {branch.coordinates.join(', ')}</p>
             </div>
-            <Image src={branch.img} width={100} height={200} alt='' className={Style.img}/>
+            <Image src={branch.img} width={100} height={200} alt='' className={Style.img} loading="lazy"/>
           </div>
         ))}
       </article>

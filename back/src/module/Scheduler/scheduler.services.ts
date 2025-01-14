@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { Reservation } from 'src/entities/Reservation.entity';
-import { User } from 'src/entities/User.entity';
-import { Room } from 'src/entities/Room.entity';
+import { Reservation } from '../../entities/Reservation.entity';
+import { User } from '../../entities/User.entity';
+import { Room } from '../../entities/Room.entity';
 import { NotificationsService } from '../notifications/notifications.service';
 import { Repository } from 'typeorm';
-import { PaymentStatus } from 'src/enums/enums';
+import { PaymentStatus } from '../../enums/enums';
 
 @Injectable()
 export class SchedulerService {

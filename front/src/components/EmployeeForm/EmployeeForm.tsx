@@ -1,7 +1,8 @@
 "use client";
-
+// ACTUAL
 import { useState } from "react";
-import employee from "@/api/employee";
+import { createEmployee,updateEmployeeById } from "@/api/employee";
+
 import { validateEmployee } from "@/helpers/validateEmployee";
 import EmployeeList from "./EmployeeList";
 import { IEmployeeProps } from "@/interfaces/TypeEmployee";
@@ -16,6 +17,11 @@ export default function EmployeeForm() {
   const [role, setRole] = useState("");
   const [errors, setErrors] = useState<IEmployeeError>({});
 
+  // Agregar estado para manejar el empleado seleccionado y el modo de actualización
+  const [modoActualizar, setModoActualizar] = useState(false);
+  const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState<IEmployeeProps | null>(null);
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newEmployee: IEmployeeProps = {
@@ -25,41 +31,72 @@ export default function EmployeeForm() {
       phone: Number(phone),
       role,
     };
+    
     const validationErrors = validateEmployee(newEmployee);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       try {
-        const response = await employee(newEmployee);
+                // ACTUALIZO O REGISTRO DEPENDE DEL CASO
+              //   let response;
+              //   if (modoActualizar) {
+
+              //     // NECESITO ESTE ENDPOINT
+              //      response = await updateEmployeeById(newEmployee);
+              //   } else {
+                const response = await createEmployee(newEmployee);
+              // }
+
         if (response.success) {
-          console.log("Empleado creado exitosamente:", response.data);
+          console.log("Empleado procesado exitosamente:", response.data);
           setFullName("");
           setDni("");
           setBirthDate("");
           setPhone("");
           setRole("");
+
+          setModoActualizar(false);
           Swal.fire({
-            title: "Empleado creado",
-            text: "El empleado se ha creado exitosamente",
+            title: "Empleado procesado",
+            text: "El empleado se ha procesado exitosamente",
             icon: "success",
           });
         } else {
-          console.error("Error al crear empleado:", response.error);
+          console.error("Error al procesar empleado:", response.error);
           Swal.fire({
             title: "Error",
-            text: "Hubo un error al crear el empleado",
+            text: "Hubo un error al procesar el empleado",
             icon: "error",
           });
         }
       } catch (error) {
-        console.error("Error al crear empleado:", error);
+        console.error("Error al procesar empleado:", error);
       }
     }
   };
 
+  // Función para manejar la selección de un empleado
+  const handleSelectEmployee = (employee: IEmployeeProps) => {
+
+    setFullName("");
+    setDni("");
+    // setBirthDate("");
+    setPhone("");
+    setRole("");
+    
+    setFullName(employee.name);
+    setDni(String(employee.dni));
+    // setBirthDate(employee.birthdate.toISOString().split('T')[0]); // Formato YYYY-MM-DD
+    setPhone(String(employee.phone));
+    setRole(employee.role);
+    setModoActualizar(true);
+    setEmpleadoSeleccionado(employee);
+  };
+
+
   return (
     <>
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className=" mt-8 m-auto w-96 bg-white shadow rounded-lg p-6">
         <h4 className="text-xl font-semibold mb-4">Agregar Nuevo Empleado</h4>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -162,15 +199,22 @@ export default function EmployeeForm() {
               <p className="text-red-500 text-xs italic">{errors.role}</p>
             )}
           </div>
-          <button
+
+          { modoActualizar ? (
+             <button
+             type="submit"
+             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+           >Actualizar Empleado</button>
+
+          ):(
+            <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Agregar Empleado
-          </button>
+          >Agregar Empleado</button>
+          )}
         </form>
       </div>
-      <EmployeeList />
+      <EmployeeList onSelectEmployee={handleSelectEmployee} />
     </>
   );
 }

@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Param, Delete, Query, ParseUUIDPipe, UseGu
 import { CreateReservationDto } from './dto/create-reservations.dto';
 import { ApiTags } from "@nestjs/swagger";
 import { ReservationService } from './reservations.service';
-import { JwtAuthGuard } from 'src/guards/jwt-auth/jwt-auth.guard';
-import { Roles } from 'src/decorators/roles/roles.decorator';
+import { JwtAuthGuard } from '../../guards/jwt-auth/jwt-auth.guard';
+import { Roles } from '../../decorators/roles/roles.decorator';
 
 @Controller('reservations')
 @UseGuards(JwtAuthGuard) 

@@ -4,7 +4,7 @@ import { CreatePaymentDto } from './dto/create-payment.dto';
 import {Stripe} from 'stripe';
 import { ApiTags } from '@nestjs/swagger';
 import { ReservationRepository } from '../reservations/reservations.repository';
-import { JwtAuthGuard } from 'src/guards/jwt-auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../../guards/jwt-auth/jwt-auth.guard';
 
 @ApiTags('Payments')
 @Controller('payments')

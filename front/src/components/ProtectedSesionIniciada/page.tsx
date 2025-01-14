@@ -25,7 +25,9 @@ const RedirectHandler: React.FC<{ children: React.ReactNode }> = ({ children }) 
                   icon: "info",
                   confirmButtonText: "Ir al Inicio",
                 }).then(() => {
-                  router.push("/");
+                  setTimeout(() => {
+                    router.push("/");
+                  }, 0);
                 });
               }
             } else {
@@ -35,13 +37,17 @@ const RedirectHandler: React.FC<{ children: React.ReactNode }> = ({ children }) 
                 icon: "info",
                 confirmButtonText: "Aceptar",
               }).then(() => {
-                router.push("/");
+                setTimeout(() => {
+                  router.push("/");
+                }, 0);
               });
             }
           }
         } catch (error) {
           console.error("Error al cargar los datos del usuario:", error);
-          router.push("/login");
+          setTimeout(() => {
+            router.push("/login");
+          }, 0);
         }
       }
     };
@@ -49,14 +55,15 @@ const RedirectHandler: React.FC<{ children: React.ReactNode }> = ({ children }) 
     handleRedirect();
   }, [router, loadUserData, userData, pathname]);
 
-
   if (!userData && (pathname === "/login" || pathname === "/register")) {
     return <>{children}</>;
   }
 
   if (userData?.userData.role.name === "Administrador") {
     if (pathname === "/login") {
-      router.push("/");
+      setTimeout(() => {
+        router.push("/");
+      }, 0);
     }
     return <>{children}</>;
   }

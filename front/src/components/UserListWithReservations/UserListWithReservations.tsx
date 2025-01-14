@@ -12,6 +12,10 @@ const Clients: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
 
+
+
+
+  //////
   useEffect(() => {
     const fetchData = async () => {
       try {

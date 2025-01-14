@@ -72,6 +72,8 @@ export default function ContadorVisitas() {
             fetchTotalVisits();
           }
         });
+        console.log(ip);
+        
       } else {
         console.error("No se pudo obtener la IP del cliente");
       }

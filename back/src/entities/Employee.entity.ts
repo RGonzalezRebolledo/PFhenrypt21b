@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Role } from "./role.entity";
+import { Role } from './Role.entity';
 
 @Entity({ name: "employees" })
 export class Employee {

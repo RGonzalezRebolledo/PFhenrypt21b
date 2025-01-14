@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Reservation } from 'src/entities/Reservation.entity';
-import { Room } from 'src/entities/Room.entity';
-import { User } from 'src/entities/User.entity';
+import { Reservation } from '../../entities/Reservation.entity';
+import { Room } from '../../entities/Room.entity';
+import { User } from '../../entities/User.entity';
 import { Repository, Between } from 'typeorm';
 import { NotificationsService } from '../notifications/notifications.service';
 import { CreateReservationDto } from './dto/create-reservations.dto';

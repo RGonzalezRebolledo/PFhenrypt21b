@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Reservation } from 'src/entities/Reservation.entity';
+import { Reservation } from '../../entities/Reservation.entity';
 import { CreateReservationDto } from './dto/create-reservations.dto';
 import { ReservationRepository } from './reservations.repository';
 import { AuthService } from './../auth/auth.service';

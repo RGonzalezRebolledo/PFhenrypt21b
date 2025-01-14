@@ -116,7 +116,7 @@ export const RestaurantComponent = () => {
         </article>
 {/*Gimnasio de entrenamiento*/}
         <article className={Styles.gimnasioContainer}>
-            <Image src={restaurantIMG} width={780} height={755} alt='Gimnasio'/>
+            <Image src={restaurantIMG} width={780} height={755} alt='Gimnasio' loading="lazy"/>
 
             <div className={Styles.containerGim}>
                 <h1>Horas de Atención</h1>
@@ -194,7 +194,7 @@ export const RestaurantComponent = () => {
     <div className={menuStyle.cardContainer}>
       {menu[categoriaActiva].map((plato) => (
         <div key={plato.id} className={menuStyle.cards}>
-            <Image src={plato.img} alt={plato.nombre} width={300} height={200}/>
+            <Image src={plato.img} alt={plato.nombre} width={300} height={200} loading="lazy"/>
             <div className={menuStyle.cardsDescription}>
                 <h3>{plato.nombre}</h3>
                 <p>{plato.descripcion}</p>

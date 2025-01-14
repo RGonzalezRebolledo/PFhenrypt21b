@@ -94,7 +94,7 @@
     font-family: serif;
     font-weight: bold;
     color: rgb(252, 247, 247);
-    background-color: #7d6641bc;
+    background-color: #7d66417a;
     width: 10rem;
     height: 2.7rem;
 }
@@ -115,10 +115,10 @@
 
 }
 
-.submitDisabled {
-    background-color: #b69663a9;
+/*.submitDisabled {
+    background-color: #382e1ea9;
     color: #ffffff;
-}
+}*/
 .iconos {
     display: flex;
     justify-content: center;

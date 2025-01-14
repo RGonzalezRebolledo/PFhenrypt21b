@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body } from '@nestjs/common';
+import { Controller, Post, Get, Body, Query } from '@nestjs/common';
 import { VisitCounterService } from './VisitCounter.Service'; 
 
 @Controller('visits')
@@ -21,4 +21,15 @@ export class VisitCounterController {
   async storeVisit(@Body() body: { ip: string }): Promise<void> {
     await this.visitCounterService.storeVisitIp(body.ip);
   }
+
+
+
+  @Get('recent')
+  async hasVisitedRecently(@Query('ip') ip: string): Promise<{ recent: boolean }> {
+    const recent = await this.visitCounterService.hasVisitedInLast24Hours(ip);
+    return { recent };
+  }
+  
+
+
 }

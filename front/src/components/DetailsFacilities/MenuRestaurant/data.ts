@@ -79,7 +79,7 @@ export const almuerzos: { [tipo: string]: menu[] } = {
     { nombre: "Fricasé de pollo", precio: 10 },
     { nombre: "Sancocho tropical", precio: 11 },
   ],
-  gourmetInternacional: [
+  internacional: [
     { nombre: "Filete mignon con puré de papas", precio: 25 },
     { nombre: "Salmón glaseado con miel y mostaza", precio: 22 },
     { nombre: "Confit de pato con salsa de frutos rojos", precio: 28 },
@@ -91,7 +91,7 @@ export const almuerzos: { [tipo: string]: menu[] } = {
     { nombre: "Pato pekinés (China)", precio: 27 },
     { nombre: "Tartar de atún con aguacate", precio: 19 },
   ],
-  ligeroSaludable: [
+  saludable: [
     { nombre: "Wrap de pollo y espinacas", precio: 8 },
     { nombre: "Ensalada César con pollo", precio: 10 },
     { nombre: "Sopa de lentejas con vegetales", precio: 7 },

@@ -55,10 +55,10 @@ export const GymComponent = () => {
       
       {/*Gimnasio de entrenamiento*/}
       <article className={Styles.gimnasioContainer}>
-          <Image src={gymPortada} width={780} height={755} alt='Gimnasio' />
+          <Image src={gymPortada} width={780} height={755} alt='Gimnasio' loading="lazy"/>
 
           <div className={Styles.containerGim}>
-              <Image src={gymIMG} width={780} height={955} alt='Gimnasio'/>
+              <Image src={gymIMG} width={780} height={955} alt='Gimnasio' loading="lazy"/>
               <p>Nuestro gimnasio está equipado con máquinas de última tecnología y zonas de descanso para que puedas disfrutar de tu entrenamiento.</p>
           </div>
       </article>
@@ -112,7 +112,7 @@ export const GymComponent = () => {
     <div className={menuStyle.cardContainer}>
       {menu[categoriaActiva].map((plato) => (
         <div key={plato.id} className={menuStyle.cards}>
-            <Image src={plato.img} alt={plato.nombre} width={300} height={200}/>
+            <Image src={plato.img} alt={plato.nombre} width={300} height={200} loading="lazy"/>
             <div className={menuStyle.cardsDescription}>
                 <h3>{plato.nombre}</h3>
                 <p>{plato.descripcion}</p>

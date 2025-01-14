@@ -142,13 +142,13 @@ const Sidebar = () => {
               d="M10 10 H 190 V 140 H 10 Z"
               fill="#f0f0f0"
               stroke="#000"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <path
               d="M10 10 Q 0 75 10 140"
               fill="none"
               stroke="#000"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </svg>
           {isExpanded && (

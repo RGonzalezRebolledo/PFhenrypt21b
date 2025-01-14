@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import Stripe from 'stripe';
-import { PaymentStatus } from 'src/enums/enums';
+import { PaymentStatus } from '../../enums/enums';
 import { ReservationRepository } from '../reservations/reservations.repository';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Reservation } from 'src/entities/Reservation.entity';
+import { Reservation } from '../../entities/Reservation.entity';
 import { Repository } from 'typeorm';
 import { NotificationsService } from '../notifications/notifications.service';
-import { User } from 'src/entities/User.entity';
-import { Room } from 'src/entities/Room.entity';
+import { User } from '../../entities/User.entity';
+import { Room } from '../../entities/Room.entity';
 
 @Injectable()
 export class PaymentService {

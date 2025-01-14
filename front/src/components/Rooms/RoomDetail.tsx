@@ -95,6 +95,7 @@ const RoomDetail = ({
             selected={checkInDate}
             onChange={(date) => setCheckInDate(date || undefined)}
             className="border rounded-md p-2 w-full"
+            minDate={new Date()}
           />
         </div>
 
@@ -106,7 +107,8 @@ const RoomDetail = ({
             selected={checkOutDate}
             onChange={(date) => setCheckOutDate(date || undefined)}
             className="border rounded-md p-2 w-full"
-            minDate={checkInDate}
+            //minDate={checkInDate}
+            minDate={new Date()}
           />
         </div>
 

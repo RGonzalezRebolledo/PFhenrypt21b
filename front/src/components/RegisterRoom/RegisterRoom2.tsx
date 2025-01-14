@@ -16,10 +16,12 @@ import { useRouter } from "next/navigation";
 import FileUploader from "./FileUploader";
 import GuestsInput from "./GuestsInput";
 import RoomList from "./RoomList";
+import { useLoggin } from "@/context/logginContext";
 
 const RegisterForm = () => {
   const APIURL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
+  const { userData } = useLoggin();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -54,7 +56,7 @@ const RegisterForm = () => {
   };
 
   const handleBlur = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setErrors((prevErrors) => ({
@@ -115,7 +117,9 @@ const RegisterForm = () => {
       console.log("Datos a enviar:", datosParaEnviar);
       const response = await fetch(`${APIURL}/rooms/registerRoom`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+        "Authorization": `Bearer ${userData?.token}`},
         body: JSON.stringify(datosParaEnviar),
       });
 
@@ -143,26 +147,26 @@ const RegisterForm = () => {
     <>
       <form
   onSubmit={handleSubmit}
-  className="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md grid grid-cols-2 gap-6"
+  className="max-w-4xl mx-auto p-8 rounded-lg shadow-md grid grid-cols-2 gap-6"
 >
 
   <div className="flex flex-col gap-6">
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Imagen</label>
+      <label className="block text-lg font-medium">Imagen</label>
       <FileUploader
         onFileUpload={(fileUrl) =>
           setFormData((prev) => ({ ...prev, image: fileUrl }))
         }
       />
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${errors.image ? "" : "invisible"}`}
       >
         {errors.image}
-      </p>
+      </span>
     </div>
 
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Descripción</label>
+      <label className="block text-lg font-medium">Descripción</label>
       <textarea
         name="description"
         placeholder="Información de la habitación"
@@ -171,35 +175,46 @@ const RegisterForm = () => {
         onBlur={handleBlur}
         className="w-full border border-gray-400 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 h-32"
       />
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${
           errors.description ? "" : "invisible"
         }`}
       >
         {errors.description}
-      </p>
+      </span>
     </div>
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Capacidad</label>
-      <GuestsInput
-        maxGuests={8}
-        initialGuests={parseInt(formData.beds, 10) || 0}
-        onGuestsChange={(value) =>
-          setFormData((prev) => ({ ...prev, beds: value.toString() }))
-        }
-      />
-      <p
-        className={`text-red-500 text-xs mt-1 ${errors.beds ? "" : "invisible"}`}
-      >
-        {errors.beds}
-      </p>
-    </div>
+          <label className="block text-lg font-medium">Capacidad</label>
+          <select
+            name="beds"
+            value={formData.beds || ""}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, beds: e.target.value }))
+            }
+            onBlur={handleBlur}
+            className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
+          >
+            <option value="">Selecciona una opción</option>
+            {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+              <option key={num} value={num}>
+                {num}
+              </option>
+            ))}
+          </select>
+          <span
+            className={`text-red-500 text-xs mt-1 ${
+              errors.beds ? "" : "invisible"
+            }`}
+          >
+            {errors.beds}
+          </span>
+        </div>
   </div>
 
 
   <div className="flex flex-col gap-6">
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Título</label>
+      <label className="block text-lg font-medium">Título</label>
       <input
         name="title"
         placeholder="Nombre de la habitación"
@@ -208,35 +223,36 @@ const RegisterForm = () => {
         onBlur={handleBlur}
         className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
       />
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${
           errors.title ? "" : "invisible"
         }`}
       >
         {errors.title}
-      </p>
+      </span>
     </div>
 
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Categoría</label>
-      <select name="roomType" id="" className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2">
-        <option value="">seleccionar una categoría</option>
-        <option value="luxury">Habitación de lujo</option>
-        <option value="standard">Habitación estándar</option>
-        <option value="suite">Suite</option>
-        <option value="family">Habitación familiar deluxe</option>
-      </select>
-      <p
+      <label className="block text-lg font-medium">Categoría</label>
+      <input
+        name="roomType"
+        placeholder="Tipo de habitación"
+        value={formData.roomType}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
+      />
+      <span
         className={`text-red-500 text-xs mt-1 ${
           errors.roomType ? "" : "invisible"
         }`}
       >
         {errors.roomType}
-      </p>
+      </span>
     </div>
 
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Tamaño</label>
+      <label className="block text-lg font-medium">Tamaño</label>
       <div className="flex items-center gap-2">
         <input
           name="size"
@@ -244,54 +260,54 @@ const RegisterForm = () => {
           value={formData.size}
           onChange={handleChange}
           onBlur={handleBlur}
-          className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
+          className="w-3/4 border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
         />
       </div>
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${errors.size ? "" : "invisible"}`}
       >
         {errors.size}
-      </p>
+      </span>
     </div>
 
     
 
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Puntuación</label>
+      <label className="block text-lg font-medium">Puntuación</label>
       <input
         name="rating"
-        placeholder="Rating del 0 al 5"
+        placeholder="Rating del 1 al 5"
         value={formData.rating}
         onChange={handleChange}
         onBlur={handleBlur}
         className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
       />
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${
           errors.rating ? "" : "invisible"
         }`}
       >
         {errors.rating}
-      </p>
+      </span>
     </div>
 
     <div>
-      <label className="block text-gray-600 text-lg font-medium">Precio por noche</label>
+      <label className="block text-lg font-medium">Precio por noche</label>
       <input
         name="price"
-        placeholder="Precio por noche Usd."
+        placeholder="Precio por noche"
         value={formData.price}
         onChange={handleChange}
         onBlur={handleBlur}
         className="w-full border border-gray-400 rounded px-3 py-2 focus:outline-none focus:ring-2"
       />
-      <p
+      <span
         className={`text-red-500 text-xs mt-1 ${
           errors.price ? "" : "invisible"
         }`}
       >
         {errors.price}
-      </p>
+      </span>
     </div>
   </div>
 
@@ -309,3 +325,4 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
+

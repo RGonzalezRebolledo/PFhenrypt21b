@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { LoginUserDto } from './dto/login-auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/User.entity';
+import { User } from '../../entities/User.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
@@ -11,7 +11,7 @@ import { CreateUserDto } from './dto/CreateUserDto';
 import { NotificationsService } from '../notifications/notifications.service';
 import { RolesService } from '../../module/roles/roles.service';
 import { adminMock } from './admin-mock';
-import { Role } from 'src/entities/role.entity';
+import { Role } from '../../entities/Role.entity';
 
 @Injectable()
 export class AuthService {

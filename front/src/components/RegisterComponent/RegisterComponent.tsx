@@ -32,7 +32,7 @@ const RegisterComponent = () => {
     <form onSubmit={handleSubmit} className={`${Style.container} bg-beige `}>
       {/*Imagen estática para el componente Register*/}
       <div className={Style.imgContainer}>
-        <Image src={registerImg} alt="Usuario" width={525} height={525} />
+        <Image src={registerImg} alt="Usuario" width={525} height={525} loading="lazy"/>
       </div>
       {/*Formulario de registro*/}
       <div className={Style.formContainer}>
@@ -147,6 +147,7 @@ const RegisterComponent = () => {
           <p className="text-red-500 text-xs m-2">{errors.phone}</p>
         )}
         <div className={Style.inputLabelGroup}>
+
           <Image
             src={phone}
             width={25}

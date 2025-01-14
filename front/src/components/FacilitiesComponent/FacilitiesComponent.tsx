@@ -28,7 +28,7 @@ export const FacilitiesComponent = () => {
 
         {/*Restaurante*/}
         <article className={Style.gimnasioContainer}>
-          <Image src={restauranteImg} width={810} height={755} alt="Gimnasio" />
+          <Image src={restauranteImg} width={810} height={755} alt="Gimnasio" loading="lazy"/>
           <span>01</span>
           <div className={Style.containerGim}>
             <h3 className={Style.aptttud}>Gastronomía exclusiva</h3>
@@ -62,13 +62,13 @@ export const FacilitiesComponent = () => {
             </button>
           </div>
           <span>02</span>
-          <Image src={piscinaImg} width={810} height={755} alt="Gimnasio" />
+          <Image src={piscinaImg} width={810} height={755} alt="Gimnasio" loading="lazy"/>
         </article>
         <hr className={Style.hr} />
 
         {/*Gimnasio de entrenamiento*/}
         <article className={Style.gimnasioContainer}>
-          <Image src={gimnasioImg} width={810} height={755} alt="Gimnasio" />
+          <Image src={gimnasioImg} width={810} height={755} alt="Gimnasio" loading="lazy"/>
           <span>03</span>
           <div className={Style.containerGim}>
             <h3 className={Style.aptttud}>Bienestar físico</h3>
@@ -102,7 +102,7 @@ export const FacilitiesComponent = () => {
             </button>
           </div>
           <span>04</span>
-          <Image src={spaImg} width={810} height={755} alt="Gimnasio" />
+          <Image src={spaImg} width={810} height={755} alt="Gimnasio" loading="lazy"/>
         </article>
       </section>
     </>

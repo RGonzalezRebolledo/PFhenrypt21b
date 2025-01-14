@@ -5,7 +5,10 @@ import { Reservation, Room } from "@/interfaces";
 import { useState, useEffect } from "react";
 import { useLoggin } from "@/context/logginContext";
 import { PaymentButton } from "@/components/PaymentButton/PaymentButton";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
+
+
+
 
 const ReservationsPage = () => {
   const { userData } = useLoggin();

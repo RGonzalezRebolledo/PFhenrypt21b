@@ -19,7 +19,8 @@ export const validateEmployee = (values: IEmployeeProps) => {
   }
 
   // validar el telefono
-  if (!values.phone || !Number.isInteger(values.phone)) {
+  // if (!values.phone || !Number.isInteger(values.phone)) {
+    if (!values.phone) {
     errors.phone = "El teléfono es requerido";
   }
 

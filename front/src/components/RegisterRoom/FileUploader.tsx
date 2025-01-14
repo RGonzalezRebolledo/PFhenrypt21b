@@ -52,7 +52,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
   };
 
   return (
-    <div className="relative w-full h-40 border border-gray-400 rounded bg-white shadow-sm flex items-center justify-center">
+    <div className="relative w-full h-40 border border-gray-400 rounded  shadow-sm flex items-center justify-center">
       {previewUrl ? (
         <Image
           src={previewUrl}
@@ -63,7 +63,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
           unoptimized
         />
       ) : (
-        <p className="text-gray-600 text-sm font-medium">Selecciona una imagen</p>
+        <p className=" text-sm font-medium">Selecciona una imagen</p>
       )}
 
       <input

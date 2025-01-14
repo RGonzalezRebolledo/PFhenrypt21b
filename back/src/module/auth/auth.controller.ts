@@ -14,7 +14,7 @@ import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-auth.dto';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { UsersService } from '../users/users.service';
-import { User } from 'src/entities/User.entity';
+import { User } from '../../entities/User.entity';
 
 @Controller('auth')
 export class AuthController {

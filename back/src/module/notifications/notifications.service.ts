@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-import { Reservation } from 'src/entities/Reservation.entity';
-import { Room } from 'src/entities/Room.entity';
-import { User } from 'src/entities/User.entity';
+import { Reservation } from '../../entities/Reservation.entity';
+import { Room } from '../../entities/Room.entity';
+import { User } from '../../entities/User.entity';
 
 @Injectable()
 export class NotificationsService {

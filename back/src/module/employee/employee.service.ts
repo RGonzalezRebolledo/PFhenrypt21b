@@ -3,8 +3,8 @@ import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Employee } from 'src/entities/employee.entity';
-import { Role } from 'src/entities/role.entity';
+import { Employee } from '../../entities/Employee.entity';
+import { Role } from '../../entities/Role.entity';
 
 @Injectable()
 export class EmployeeService {

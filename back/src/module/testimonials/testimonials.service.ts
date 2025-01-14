@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Testimonial } from '../../entities/Testimonial.entity';
 import { CreateTestimonialDto } from './dto/create-testimonial.dto';
 import { User } from '../../entities/User.entity';
-import { TestimonialStatus } from 'src/enums/testimonial-status.enum';
+import { TestimonialStatus } from '../../enums/testimonial-status.enum';
 
 @Injectable()
 export class TestimonialsService {

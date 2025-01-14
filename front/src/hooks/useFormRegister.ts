@@ -55,7 +55,7 @@ export const useFormRegister = (
     if (Object.keys(formErrors).length === 0) {
       const { confirm_password, ...newData } = form;
       setLoading(true)
-console.log(confirm_password);
+        console.log(confirm_password);
         const errorResponse = {
          message: 'El correo electrónico ya está registrado',
          error: 'Conflict',
@@ -76,6 +76,7 @@ console.log(confirm_password);
             title: "Registrado",
             icon: "success",
           });
+          setLoading(false);
         } else if(result === 409) {
           setIsErrorResponse(true)
           Swal.fire({
@@ -83,7 +84,7 @@ console.log(confirm_password);
             title: "Error",
             icon: "error",
           });
-          setLoading(false)
+          setLoading(false);
         }
       } catch (error) {
         console.log("Error al registrar:", error);
@@ -92,7 +93,7 @@ console.log(confirm_password);
           title: "Error",
           icon: "error",
         });
-        setLoading(false)
+        setLoading(false);
       }
     } else {
       setErrors(formErrors);

@@ -12,6 +12,6 @@ export interface IEmployeeError {
   name?: string;
   dni?: string;
   birthdate?: string;
-  phone?: string;
+  phone?: number;
   role?: string;
 } 

@@ -55,10 +55,10 @@ export const SpaComponent = () => {
       
        {/*Spa de relajación*/}
       <article className={Styles.gimnasioContainer}>
-          <Image src={gymPortada} width={780} height={755} alt='Gimnasio' />
+          <Image src={gymPortada} width={780} height={755} alt='Gimnasio' loading="lazy"/>
 
           <div className={Styles.containerGim}>
-              <Image src={gymIMG} width={780} height={955} alt='Gimnasio'/>
+              <Image src={gymIMG} width={780} height={955} alt='Gimnasio' loading="lazy"/>
               <p>En nuestro spa encontrarás espacios diseñados para ofrecerte total tranquilidad y relajación, con una 
                 variedad de servicios para rejuvenecer tu cuerpo y mente.</p>
           </div>
@@ -110,7 +110,7 @@ export const SpaComponent = () => {
     <div className={menuStyle.cardContainer}>
       {menu[categoriaActiva].map((plato) => (
         <div key={plato.id} className={menuStyle.cards}>
-            <Image src={plato.img} alt={plato.nombre} width={300} height={200}/>
+            <Image src={plato.img} alt={plato.nombre} width={300} height={200} loading="lazy"/>
             <div className={menuStyle.cardsDescription}>
                 <h3>{plato.nombre}</h3>
                 <p>{plato.descripcion}</p>

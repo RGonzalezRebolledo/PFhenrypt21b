@@ -4,9 +4,9 @@ import ProtectedAdmin from "@/components/ProtectedAdmin/page";
 const page = () => {
   return (
     <>
-      <ProtectedAdmin>
+      {/* <ProtectedAdmin> */}
         <EmployeeList />
-      </ProtectedAdmin>
+      {/* </ProtectedAdmin> */}
     </>
   );
 };

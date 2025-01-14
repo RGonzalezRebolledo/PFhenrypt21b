@@ -80,10 +80,10 @@ bebidas: [
         </article>
 {/*Gimnasio de entrenamiento*/}
         <article className={Styles.gimnasioContainer}>
-            <Image src={restaurantIMG} width={780} height={755} alt='Gimnasio'/>
+            <Image src={restaurantIMG} width={780} height={755} alt='Gimnasio' loading="lazy"/>
 
             <div className={Styles.containerGim}>
-            <Image src={restaurantIMG2} width={780} height={955} alt='Gimnasio'/>
+            <Image src={restaurantIMG2} width={780} height={955} alt='Gimnasio' loading="lazy"/>
             <p>Las piscina estan equipadas con zonas de descanso y camastros para que disfrutes del sol de manera segura.</p>
             </div>
         </article>
@@ -162,7 +162,7 @@ opciones de actividades acuáticas para mantenerte activo, es el espacio perfect
     <div className={menuStyle.cardContainer}>
       {menu[categoriaActiva].map((plato) => (
         <div key={plato.id} className={menuStyle.cards}>
-            <Image src={plato.img} alt={plato.nombre} width={300} height={200}/>
+            <Image src={plato.img} alt={plato.nombre} width={300} height={200} loading="lazy"/>
             <div className={menuStyle.cardsDescription}>
                 <h3>{plato.nombre}</h3>
                 <p>{plato.descripcion}</p>

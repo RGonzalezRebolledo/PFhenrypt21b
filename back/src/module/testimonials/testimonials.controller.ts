@@ -16,8 +16,8 @@ import {
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TestimonialsService } from './testimonials.service';
 import { CreateTestimonialDto } from './dto/create-testimonial.dto';
-import { JwtAuthGuard } from 'src/guards/jwt-auth/jwt-auth.guard';
-import { TestimonialStatus } from 'src/enums/testimonial-status.enum';
+import { JwtAuthGuard } from '../../guards/jwt-auth/jwt-auth.guard';
+import { TestimonialStatus } from '../../enums/testimonial-status.enum';
 
 @ApiTags('Testimonials')
 @Controller('testimonials')

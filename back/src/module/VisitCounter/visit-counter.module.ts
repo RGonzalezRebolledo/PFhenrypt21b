@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { VisitCounter } from 'src/entities/VisitCounter.entity';
+import { VisitCounter } from '../../entities/VisitCounter.entity';
 import { VisitCounterController } from './VisitCounter.Controller';
 import { VisitCounterService } from './VisitCounter.Service';
 import { VisitCounterRepository } from './VisitCounterRepository';

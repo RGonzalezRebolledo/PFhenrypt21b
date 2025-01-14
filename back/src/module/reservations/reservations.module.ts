@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm"
-import { Reservation } from "src/entities/Reservation.entity";
-import { Room } from "src/entities/Room.entity";
-import { User } from "src/entities/User.entity";
+import { Reservation } from '../../entities/Reservation.entity';
+import { Room } from '../../entities/Room.entity';
+import { User } from '../../entities/User.entity';
 import { AuthModule } from "../auth/auth.module";
 import { RoomsModule } from "../create-room/rooms.module";
 import { NotificationsService } from "../notifications/notifications.service";

@@ -1,7 +1,7 @@
 import { IsDate, IsString, IsNotEmpty, Validate  } from "class-validator";
 import { Type } from "class-transformer";
 import { ApiProperty } from "@nestjs/swagger";
-import { CheckInBeforeCheckOut } from "src/validators/checkin-before-checkout.validator";
+import { CheckInBeforeCheckOut } from '../../../validators/checkin-before-checkout.validator';
 
 export class CreateReservationDto {
 

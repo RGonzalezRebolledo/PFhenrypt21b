@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { PaymentStatus } from 'src/enums/enums';
+import { PaymentStatus } from '../enums/enums';
 import { Room } from './Room.entity';
 import { User } from './User.entity';
 
