@@ -44,7 +44,7 @@ export class SchedulerService {
           const room = await this.roomRepository.findOne({ where: { id: reservation.roomId } });
   
           reservation.notified12Hours = true; 
-          // await this.notificationService.sendReminderNotification(user, room, reservation)
+           await this.notificationService.sendReminderNotification(user, room, reservation)
           await this.reservationRepository.save(reservation);
           console.log(`12-hour notification sent for reservation ${reservation.id}`);
         }
@@ -57,7 +57,7 @@ export class SchedulerService {
           await this.reservationRepository.save(reservation);
           console.log(`Reservation ${reservation.id} marked as deleted.`);
   
-          // await this.notificationService.sendDeletionNotification(user, reservation);
+           await this.notificationService.sendDeletionNotification(user, reservation);
           console.log(`Deletion notification sent for reservation ${reservation.id}`);  
         }
       }
